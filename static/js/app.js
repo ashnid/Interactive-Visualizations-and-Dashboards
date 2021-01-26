@@ -1,9 +1,6 @@
-// Use D3 fetch to read the JSON file
-
 function dropdown() {
     d3.json("./samples.json").then(data => {
         var sampleName = data.names;
-        // console.log(sampleName)
         var dataid = d3.select("#selDataset")
         sampleName.forEach((sampleid) => {
             dataid.append("option")
@@ -13,7 +10,6 @@ function dropdown() {
         var firstsample = sampleName[0];
         metadata(firstsample);
         Charts(firstsample);
-        // console.log(firstsample)
     });
 };
 
@@ -24,7 +20,6 @@ function metadata(id) {
         var sampleMetadata = data.metadata;
         var result = sampleMetadata.filter(obj => obj.id == id);
         var filterresult = result[0];
-        // console.log(filterresult)
         var display = d3.select("#sample-metadata");
         display.html("");
         Object.entries(filterresult).forEach(([key, value]) => {
